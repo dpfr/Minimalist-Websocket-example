@@ -4,7 +4,7 @@ var serveStatic = require('serve-static');
 var _ = require("lodash");
 
 var websocketServerPort = 4443;
-var httpServerPort = 80;
+var httpServerPort = process.env.PORT || 80;
 
 // Websockets
 var currentWebsocketConnections = {};
