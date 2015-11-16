@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<script>
+			window.currentsocket = new WebSocket('ws://' + window.location.hostname + ':4443/');
+			window.currentsocket.onmessage = function(msg){
+				var elementToAppend = document.createElement('p');
+				elementToAppend.innerHTML = msg.data;
+				document.getElementById('messageplaceholder').appendChild(elementToAppend);
+			}
+		</script>
+	</head>
+	<body>
+		<input id="text" type="text"/>
+		<input type="button" onclick="currentsocket.send(document.getElementById('text').value);" value="Send message !" />
+		<div id="messageplaceholder">
+			<h1>Messages</h1>
+		</div>
+	</body>
+</html>
